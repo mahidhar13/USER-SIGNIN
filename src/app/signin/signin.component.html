@@ -1,0 +1,64 @@
+<div *ngIf="showSignIn">
+<form class="c1" #signIn = "ngForm" (submit)="signInForm(signIn)">
+    <fieldset>
+    <legend><strong>Sign In</strong></legend>
+    <label for="email"><b>Enter Email:</b></label>
+    <br><br>
+    <input id="email" class ="c2" type="email"  name="email" [(ngModel)] = "email" placeholder="Enter Email here" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"><br><br>
+    <label for="password"><b>Enter Password:</b></label><br><br>
+    <input id="password" class ="c2" type="password"  name="password" [(ngModel)] = "password" placeholder="Enter Password here" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br><br>
+    <div style="color: red;"  *ngIf="validMsg">Entered Username or Password is not correct</div>
+    <button [disabled] = "signIn.invalid" (click)="user(signIn)"><b>Sign In</b></button><br><br><hr>
+    <button (click) = "loadValues(signIn)">Set form values</button>
+    <button (click)="signUp()"><b>Not a user? Sign Up</b></button><br><br>
+    <button (click)="forgotPassword()"><b>Forgot Password</b></button>
+    </fieldset>
+</form>
+<div>Pristine: {{signIn.pristine}}</div>
+<div>Dirty: {{signIn.dirty}}</div>
+<div>Touched: {{signIn.touched}}</div>
+<div>Untouched: {{signIn.untouched}}</div>
+<div>Valid: {{signIn.valid}}</div>
+<div>Invalid: {{signIn.invalid}}</div>
+</div>
+<div *ngIf="showSignUp">
+    <form class ="c1" #signUp = "ngForm" (submit) = "registration(signUp)">
+        <fieldset>
+        <legend><b>Sign Up</b></legend>
+        <label for="fname"><b>First Name:</b></label><br><br>
+        <input id="fname" class ="c2" type="text"  name="fname" [(ngModel)] = "fname" placeholder="Enter First Name" required><br><br>
+        <label for="lname"><b>Last Name:</b></label><br><br>
+        <input id="lname" class ="c2" type="text" name="lname" [(ngModel)] = "lname" placeholder="Enter Last Name" required><br><br>
+        <label for="uname"><b>UserName:</b></label><br><br>
+        <input id="uname" class ="c2" type="text" name="uname" [(ngModel)] = "uname" placeholder="Enter User Name" required><br><br>
+        <label for="pwd"><b>Password:</b></label><br><br>
+        <input id="pwd" class ="c2" type="password"  name="pwd" [(ngModel)] = "pwd" placeholder="Enter Password" required><br><br>
+        <!-- <mat-form-field appearance="fill"> 
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field> -->
+          
+        <button type="submit" [disabled]="!signUp.valid"><b>Sign Up</b></button><br><br>
+        <button (click)="reSignIn()"><b>Already a user? Go to SignIn Page</b></button>
+        </fieldset>
+    </form>
+</div>
+
+<div *ngIf="fpassword">
+    <form class = "c1" #forgot = "ngForm">
+    <fieldset>
+    <legend><b>Forgot Email:</b></legend>
+    <label for="uname"><b>Enter your Username:</b></label><br><br>
+    <input class ="c2" type="text" name="uname" [(ngModel)] = "uname" required><br><br>
+    <label for="pwd"><b>Enter new Password:</b></label><br><br>
+    <input class ="c2" type="password"  name="pwd" [(ngModel)] = "pwd" required><br><br>
+    <label for="pwd1"><b>Confirm your password</b></label><br><br>
+    <input class ="c2" type="password" name="pwd1" [(ngModel)] = "pwd1" required><br><br>
+    <div style="color: red; text-align: right;" *ngIf = "errorPwd">Password did not match</div>
+    <button (click)="pwdmatch()" [disabled]="!forgot.valid"><b>Reset Password</b></button>
+    </fieldset>
+    </form>
+</div>
+ 

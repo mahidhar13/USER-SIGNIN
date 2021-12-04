@@ -1,0 +1,17 @@
+<h1>Country Names</h1>
+
+<input type="search" (keyup)="searchCountries()" [(ngModel)] = "searchCountry" name = "search" placeholder="Search for Names" title="Type in a name">
+<button (click)="getCountries()">Country</button>
+
+<table class="c2" >
+    <tr class="c3">
+        <th>Index No.</th>
+        <th>Country</th>
+        <th>Region</th>
+    </tr>
+    <tr class="c3" *ngFor = "let x of countryArray, index as i">
+        <td> {{ i + 1 }}</td>
+        <td> {{ x.country }}</td>
+        <td> {{ x.region }}</td>
+    </tr>
+</table>

@@ -1,0 +1,11 @@
+.c2{
+    font-family: Arial;
+    border-collapse: collapse;
+    width: 30%;
+}
+
+.c3{
+    border: 1px solid orange;
+    text-align: left;
+    padding: 8px;
+}

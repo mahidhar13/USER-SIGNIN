@@ -1,0 +1,17 @@
+<div *ngIf = "cond1; else showErrorMsg; then successMsg">Show Me</div>
+<ng-template #showErrorMsg>Given condition is false</ng-template>
+<ng-template #successMsg>Given condition is true</ng-template>
+<button (click) = readMore()>Click me to play with display properties</button>
+<div [ngStyle] = "{'display': displayProp}">I am playing with CSS Display properties</div>
+<div [ngStyle] = "{'background-color': styleProp === 'blue' ? 'blue': 'green'}">
+    I am playing with CSS colors
+</div>
+<div [ngClass] = "'m1 m2'">I am playing with ngClass example</div>
+<div appStyle>I am playing with custom directives</div>
+<h1 *appNot = false>True</h1>
+<h1 *appNot = false>False</h1>
+<p>{{number | percent}}</p>
+<p>{{today | date: 'full'}}</p>
+<p>{{spaces | convertToSpaces: '*'}}</p>
+<input type="text" [(ngModel)] = "myName" name="myName" />
+<p>Entered name: {{myName}}</p>
